@@ -2,7 +2,7 @@
 
 using namespace std;
 
-///tamaño
+///tamaÃ±o
 int tam_cad(char *cadena){
     int tam=0;
     while(*cadena++ != '\0'){
@@ -12,7 +12,7 @@ int tam_cad(char *cadena){
 }
 
 
-/// tamaño recursivo
+/// tamaÃ±o recursivo
 int rec_tam(char *cadena){
     if(*cadena == '\0')
         return 0;
@@ -20,7 +20,7 @@ int rec_tam(char *cadena){
 }
 
 /// invertir
-int inv_cad(char *cadena){
+void inv_cad(char *cadena){
     char inv=0;
     char *final= cadena - tam_cad(cadena) - 1;
     while(final > cadena){
@@ -34,7 +34,7 @@ int inv_cad(char *cadena){
 int main(){
     char cadena[]={'h','o','l','a','\0'};
     char cadena1[]= "hola!!";
-    cout << inv_cad(cadena);
+    inv_cad(cadena);
 }
 
 
