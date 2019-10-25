@@ -1,3 +1,7 @@
+#include <iostream>
+
+using namespace std;
+
 ///tamaño
 int tam_cad(char *cadena){
     int tam=0;
@@ -17,13 +21,11 @@ int rec_tam(char *cadena){
 /// palindrome
 bool palindrome(char *cadena){
     char *fin= cadena + tam_cad(cadena) - 1;
-    while(fin > cadena){
-        char inv=*cadena;
-        *cadena=*fin;
-        *fin=inv;
+    while(fin > cadena && *fin==*cadena){
         fin--;
         cadena++;
     }
+    return *fin==*cadena;
 }
 
 /// invertir
@@ -45,9 +47,8 @@ int main(){
     cout<< tam_cad(cadena1);
     cout<<rec_tam(cadena1);
     inv_cad(cadena1);
-    if(palindrome(cadena3)==false)
+    if(palindrome(cadena3))
+        cout<<"Es palindrome";
+    else
         cout<<"No es palindrome";
-        else
-            cout<<"Es palindrome";
-
 }
