@@ -1,7 +1,3 @@
-#include <iostream>
-
-using namespace std;
-
 ///tamaño
 int tam_cad(char *cadena){
     int tam=0;
@@ -11,7 +7,6 @@ int tam_cad(char *cadena){
     return tam;
 }
 
-
 /// tamaño recursivo
 int rec_tam(char *cadena){
     if(*cadena == '\0')
@@ -19,22 +14,40 @@ int rec_tam(char *cadena){
     return 1+rec_tam(++cadena);
 }
 
-/// invertir
-void inv_cad(char *cadena){
-    char inv=0;
-    char *final= cadena - tam_cad(cadena) - 1;
-    while(final > cadena){
-        inv=*cadena;
-        cadena=final;
-        *final=inv;
-        final--;
+/// palindrome
+bool palindrome(char *cadena){
+    char *fin= cadena + tam_cad(cadena) - 1;
+    while(fin > cadena){
+        char inv=*cadena;
+        *cadena=*fin;
+        *fin=inv;
+        fin--;
         cadena++;
     }
 }
+
+/// invertir
+void inv_cad(char *cadena){
+    char *fin= cadena + tam_cad(cadena) - 1;
+    while(fin > cadena){
+        char inv=*cadena;
+        *cadena=*fin;
+        *fin=inv;
+        fin--;
+        cadena++;
+    }
+}
+
 int main(){
     char cadena[]={'h','o','l','a','\0'};
     char cadena1[]= "hola!!";
-    inv_cad(cadena);
+    char cadena3[]="ana";
+    cout<< tam_cad(cadena1);
+    cout<<rec_tam(cadena1);
+    inv_cad(cadena1);
+    if(palindrome(cadena3)==false)
+        cout<<"No es palindrome";
+        else
+            cout<<"Es palindrome";
+
 }
-
-
